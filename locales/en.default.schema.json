@@ -1196,6 +1196,7 @@
     "y_position": "Vertical position",
     "text_color": "Text color",
     "text_color_transparent": "Transparent header text",
+    "overlap_header": "Extend behind transparent header",
     "slider_color": "Slider color",
     "slider_inner_color": "Slider inner color",
     "bubble_style": "Bubble style",
