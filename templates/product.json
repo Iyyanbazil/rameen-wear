@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -15,19 +16,19 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "media_presentation": "grid",
+            "media_presentation": "carousel",
             "media_columns": "two",
             "image_gap": 0,
             "large_first_image": true,
             "icons_style": "arrow",
             "slideshow_controls_style": "thumbnails",
             "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "bottom",
+            "thumbnail_position": "right",
             "thumbnail_width": 48,
             "thumbnail_radius": 0,
-            "aspect_ratio": "adapt",
-            "constrain_to_viewport": true,
-            "media_fit": "contain",
+            "aspect_ratio": "1/1.25",
+            "constrain_to_viewport": false,
+            "media_fit": "cover",
             "media_radius": 0,
             "extend_media": true,
             "zoom": true,
@@ -98,6 +99,7 @@
                 "border_opacity": 100,
                 "border_color": "",
                 "border_radius": 0,
+                "link": "",
                 "open_in_new_tab": false,
                 "placeholder": "",
                 "padding-block-start": 0,
@@ -163,6 +165,7 @@
                     "border_opacity": 100,
                     "border_color": "",
                     "border_radius": 0,
+                    "link": "",
                     "open_in_new_tab": false,
                     "placeholder": "",
                     "padding-block-start": 0,
@@ -245,6 +248,7 @@
                 "stacking": false,
                 "text_color": "",
                 "show_pickup_availability": false,
+                "show_physical_stores": true,
                 "gift_card_form": true,
                 "recipient_button_style": "default",
                 "recipient_button_background": "{{ settings.color_palette.background }}",
@@ -271,7 +275,7 @@
                   "static": true,
                   "settings": {
                     "input_style": "custom",
-                    "input_background_color": "{{ settings.color_palette.color1 }}",
+                    "input_background_color": "{{ settings.color_palette.background }}",
                     "input_text_color": "{{ settings.color_palette.foreground }}",
                     "input_border_color": "{{ settings.color_palette.foreground }}",
                     "border_width": 2,
@@ -375,7 +379,7 @@
         "limit_details_width": true,
         "gap": 48,
         "enable_sticky_add_to_cart": true,
-        "background_color": "{{ settings.color_palette.color1 }}",
+        "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -474,6 +478,7 @@
                 "border_opacity": 100,
                 "border_color": "",
                 "border_radius": 0,
+                "link": "",
                 "open_in_new_tab": false,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -512,6 +517,7 @@
                     "border_opacity": 100,
                     "border_color": "",
                     "border_radius": 0,
+                    "link": "",
                     "open_in_new_tab": false,
                     "padding-block-start": 8,
                     "padding-block-end": 0,
@@ -619,58 +625,10 @@
         "padding-block-start": 24,
         "padding-block-end": 24
       }
-    },
-    "collection_links_9Pc4EL": {
-      "type": "collection-links",
-      "blocks": {
-        "link": {
-          "type": "_collection-link",
-          "static": true,
-          "settings": {
-            "show_count": true
-          },
-          "blocks": {
-            "title": {
-              "type": "_inline-collection-title",
-              "static": true,
-              "settings": {
-                "font": "var(--font-body--family)",
-                "weight": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none"
-              },
-              "blocks": {}
-            },
-            "image": {
-              "type": "_image",
-              "static": true,
-              "settings": {
-                "height": "medium",
-                "ratio": "square",
-                "border_radius": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
-      },
-      "name": "t:names.collection_links_text",
-      "settings": {
-        "layout": "text",
-        "section_width": "page-width",
-        "alignment": "left",
-        "image_position": "right",
-        "background_color": "{{ settings.color_palette.color2 }}",
-        "padding-block-start": 60,
-        "padding-block-end": 60
-      }
     }
   },
   "order": [
     "main",
-    "product-recommendations",
-    "collection_links_9Pc4EL"
+    "product-recommendations"
   ]
 }
