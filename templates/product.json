@@ -303,72 +303,102 @@
               },
               "block_order": []
             },
-            "divider": {
-              "type": "_divider",
-              "name": "t:names.divider",
+            "product_details_accordion": {
+              "type": "accordion",
+              "name": "t:names.accordion",
               "settings": {
-                "thickness": 1.5,
-                "corner_radius": "square",
-                "divider_color": "{{ settings.color_palette.foreground }}",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
-            "text": {
-              "type": "product-description",
-              "name": "t:names.product_description",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "disclosures_6A79tk": {
-              "type": "disclosures",
-              "name": "t:names.disclosures",
-              "settings": {
-                "heading": "Disclosures",
-                "heading_preset": "h5",
-                "open_by_default": false,
-                "icon": "caret",
-                "disclosure_heading_preset": "",
-                "text_color": "",
+                "icon": "plus",
                 "dividers": true,
                 "divider_color": "{{ settings.color_palette.foreground }}",
+                "type_preset": "paragraph",
+                "background_color": "",
+                "text_color": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "product_information": {
+                  "type": "_accordion-row",
+                  "name": "t:names.accordion_row",
+                  "settings": {
+                    "heading": "PRODUCT INFORMATION",
+                    "open_by_default": true,
+                    "icon": "none"
+                  },
+                  "blocks": {
+                    "description": {
+                      "type": "product-description",
+                      "name": "t:names.product_description",
+                      "settings": {
+                        "text": "{{ closest.product.description }}",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "description"
+                  ]
+                },
+                "wash_care": {
+                  "type": "_accordion-row",
+                  "name": "t:names.accordion_row",
+                  "settings": {
+                    "heading": "WASH & CARE",
+                    "open_by_default": false,
+                    "icon": "none"
+                  },
+                  "blocks": {},
+                  "block_order": []
+                },
+                "colour_disclaimer": {
+                  "type": "_accordion-row",
+                  "name": "t:names.accordion_row",
+                  "settings": {
+                    "heading": "COLOUR DISCLAIMER",
+                    "open_by_default": false,
+                    "icon": "none"
+                  },
+                  "blocks": {},
+                  "block_order": []
+                }
+              },
+              "block_order": [
+                "product_information",
+                "wash_care",
+                "colour_disclaimer"
+              ]
             }
           },
           "block_order": [
             "group",
             "variant_picker",
             "buy_buttons",
-            "divider",
-            "text",
-            "disclosures_6A79tk"
+            "product_details_accordion"
           ]
         }
       },
