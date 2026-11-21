@@ -88,6 +88,10 @@
       grid-template-columns: repeat(var(--grid-columns), 1fr);
     }
 
+    .footer-content[style*='--grid-columns: 4'] {
+      grid-template-columns: repeat(3, minmax(0, 0.75fr)) minmax(0, 2.25fr);
+    }
+
     /* Single item centered */
     .footer-content[style*='--grid-columns: 1'] {
       justify-items: center;
