@@ -16,6 +16,16 @@
   {{ section.settings.custom_liquid }}
 </div>
 
+{% stylesheet %}
+  .homepage-banner-video {
+    margin-block-start: 0;
+
+    @media screen and (min-width: 780px) {
+      margin-block-start: -10px;
+    }
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "t:names.custom_liquid",

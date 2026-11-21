@@ -11,7 +11,7 @@
     "section_Fh7TFQ": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<video width=\"1280\" height=\"720\" autoplay muted playsinline preload=\"auto\" aria-hidden=\"true\" style=\"display: block; width: 100%; height: auto;\"><source src=\"{{ 'models-walking-banner-v3.mp4' | asset_url }}\" type=\"video/mp4\"></video>",
+        "custom_liquid": "<video class=\"homepage-banner-video\" width=\"1280\" height=\"720\" autoplay muted playsinline preload=\"auto\" aria-hidden=\"true\" style=\"display: block; width: 100%; height: auto;\"><source src=\"{{ 'models-walking-banner-v3.mp4' | asset_url }}\" type=\"video/mp4\"></video>",
         "section_width": "full-width",
         "overlap_header": true,
         "padding-block-start": 0,
