@@ -396,7 +396,7 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "h3",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -623,8 +623,8 @@
         "section_width": "page-width",
         "gap": 24,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 24,
-        "padding-block-end": 24
+        "padding-block-start": 60,
+        "padding-block-end": 56
       }
     }
   },
