@@ -37,7 +37,7 @@
             "border_width": 1,
             "border_opacity": 100,
             "border_color": "",
-            "border_radius": 0
+            "border_radius": 17
           },
           "blocks": {
             "collection_title_MbKUEr": {
@@ -100,10 +100,10 @@
           "5-piece"
         ],
         "layout_type": "grid",
-        "carousel_on_mobile": false,
+        "carousel_on_mobile": true,
         "columns": 6,
         "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
+        "mobile_card_size": "44cqw",
         "columns_gap": 48,
         "bento_gap": 8,
         "rows_gap": 24,
