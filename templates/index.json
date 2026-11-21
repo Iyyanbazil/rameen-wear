@@ -154,8 +154,8 @@
           "name": "t:names.product_media",
           "static": true,
           "settings": {
-            "media_type": "video",
-            "image": "shopify://shop_images/images.jpg",
+            "media_type": "image",
+            "image": "shopify://shop_images/burgundy-abaya-five-photo-loop.gif",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
@@ -237,9 +237,9 @@
       },
       "name": "t:names.featured_product",
       "settings": {
-        "product": "",
+        "product": "burgundy-abaya-with-looped-cuffs-and-covered-buttons",
         "layout": "media-left",
-        "background_color": "{{ settings.color_palette.color3 }}",
+        "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
