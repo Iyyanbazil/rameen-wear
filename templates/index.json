@@ -6,14 +6,16 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "section_Fh7TFQ": {
       "type": "custom-liquid",
       "settings": {
         "custom_liquid": "<video width=\"1280\" height=\"720\" autoplay muted playsinline preload=\"auto\" aria-hidden=\"true\" style=\"display: block; width: 100%; height: auto;\"><source src=\"{{ 'models-walking-banner-v3.mp4' | asset_url }}\" type=\"video/mp4\"></video>",
-        "section_width": "full-width",
+        "background_color": "",
         "overlap_header": true,
+        "section_width": "full-width",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -89,6 +91,9 @@
       },
       "name": "t:names.collections_grid",
       "settings": {
+        "collection_list": [
+          "abayas"
+        ],
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "columns": 6,
@@ -116,6 +121,7 @@
           "static": true,
           "settings": {
             "media_type": "image",
+            "link": "",
             "video_loop": true,
             "video_autoplay": false,
             "image_position": "cover",
@@ -196,6 +202,7 @@
       },
       "name": "t:names.featured_product",
       "settings": {
+        "product": "",
         "layout": "media-left",
         "background_color": "{{ settings.color_palette.color3 }}",
         "padding-block-start": 0,
@@ -354,6 +361,7 @@
                 "border_opacity": 100,
                 "border_color": "",
                 "border_radius": 0,
+                "link": "",
                 "open_in_new_tab": false,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -392,6 +400,7 @@
                     "border_opacity": 100,
                     "border_color": "",
                     "border_radius": 0,
+                    "link": "",
                     "open_in_new_tab": false,
                     "padding-block-start": 8,
                     "padding-block-end": 0,
@@ -570,6 +579,7 @@
       },
       "name": "t:names.collections_carousel",
       "settings": {
+        "collection_list": [],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
         "columns": 3,
