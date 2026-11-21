@@ -104,16 +104,16 @@
         "columns": 6,
         "mobile_columns": "2",
         "mobile_card_size": "44cqw",
-        "columns_gap": 48,
+        "columns_gap": 11,
         "bento_gap": 8,
-        "rows_gap": 24,
+        "rows_gap": 10,
         "max_collections": 4,
         "icons_style": "arrow",
-        "icons_shape": "none",
+        "icons_shape": "square",
         "section_width": "page-width",
-        "gap": 12,
+        "gap": 0,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 40,
+        "padding-block-start": 35,
         "padding-block-end": 50
       }
     },
@@ -617,7 +617,7 @@
         "text_RGxHtE": {
           "type": "text",
           "settings": {
-            "text": "<h1><a href=\"/collections/all\" title=\"All products\">SHOP NOW </a></h1>",
+            "text": "<h1><a href=\"/collections/all\" title=\"All products\">SHOP NOW&nbsp;</a></h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
@@ -646,7 +646,7 @@
       "name": "t:names.marquee_section",
       "settings": {
         "movement_direction": "normal",
-        "background_color": "{{ settings.color_palette.color2 }}",
+        "background_color": "#F6D9AB",
         "padding-block-start": 48,
         "padding-block-end": 48,
         "gap_between_elements": 100
