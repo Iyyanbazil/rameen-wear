@@ -372,8 +372,7 @@
                     "open_by_default": false,
                     "icon": "none"
                   },
-                  "blocks": {},
-                  "block_order": []
+                  "blocks": {}
                 },
                 "colour_disclaimer": {
                   "type": "_accordion-row",
@@ -383,8 +382,7 @@
                     "open_by_default": false,
                     "icon": "none"
                   },
-                  "blocks": {},
-                  "block_order": []
+                  "blocks": {}
                 }
               },
               "block_order": [
