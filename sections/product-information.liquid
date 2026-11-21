@@ -408,6 +408,17 @@
       "default": "content-center-aligned"
     },
     {
+      "type": "range",
+      "id": "max_width",
+      "label": "t:settings.max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1200,
+      "visible_if": "{{ section.settings.content_width == 'content-center-aligned' }}"
+    },
+    {
       "type": "select",
       "id": "desktop_media_position",
       "label": "t:settings.media_position",

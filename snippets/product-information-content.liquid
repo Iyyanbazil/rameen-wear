@@ -87,7 +87,7 @@
 ></div>
 <div
   class="product-information section section--{{ content_width }} spacing-style{% if settings.background_color != blank %} color-custom-{{ section_id }}{% endif %} relative"
-  style="{% render 'spacing-style', settings: settings %} --gap: {{ settings.gap }}px;"
+  style="{% render 'spacing-style', settings: settings %} --gap: {{ settings.gap }}px;{% if settings.content_width == 'content-center-aligned' %} --full-page-grid-central-column-width: min({{ settings.max_width }}px, calc(100% - var(--page-margin) * 2));{% endif %}"
   data-testid="product-information"
 >
   {% if settings.desktop_media_position == 'left' and product_has_media and request.page_type == 'product' %}
