@@ -10,6 +10,25 @@
     display: block;
   }
 
+  .product-recommendations .buy-buttons-block .quantity-selector,
+  .product-recommendations .buy-buttons-block .accelerated-checkout-block {
+    display: none;
+  }
+
+  .product-recommendations .buy-buttons-block,
+  .product-recommendations .buy-buttons-block product-form-component,
+  .product-recommendations .buy-buttons-block .product-form-buttons {
+    display: block;
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .product-recommendations .buy-buttons-block .add-to-cart-button {
+    height: 38px;
+    min-height: 38px;
+    padding-block: var(--padding-xs);
+  }
+
   .product-recommendations__skeleton-item {
     aspect-ratio: 3 / 4;
     background-color: var(--color-foreground);

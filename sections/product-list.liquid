@@ -86,6 +86,27 @@
   </div>
 </div>
 
+{% stylesheet %}
+  [data-testid='product-list'] .buy-buttons-block .quantity-selector,
+  [data-testid='product-list'] .buy-buttons-block .accelerated-checkout-block {
+    display: none;
+  }
+
+  [data-testid='product-list'] .buy-buttons-block,
+  [data-testid='product-list'] .buy-buttons-block product-form-component,
+  [data-testid='product-list'] .buy-buttons-block .product-form-buttons {
+    display: block;
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  [data-testid='product-list'] .buy-buttons-block .add-to-cart-button {
+    height: 38px;
+    min-height: 38px;
+    padding-block: var(--padding-xs);
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "t:names.product_list",
