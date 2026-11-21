@@ -92,7 +92,9 @@
       "name": "t:names.collections_grid",
       "settings": {
         "collection_list": [
-          "abayas"
+          "abayas",
+          "hijab-caps",
+          "stalers"
         ],
         "layout_type": "grid",
         "carousel_on_mobile": false,
