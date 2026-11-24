@@ -126,7 +126,9 @@
           "stalers",
           "hood-abaya",
           "new-arrival",
-          "5-piece"
+          "5-piece",
+          "new-arrivals",
+          "4-piece"
         ],
         "layout_type": "grid",
         "carousel_on_mobile": true,
@@ -155,7 +157,6 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/burgundy-abaya-five-photo-loop.gif",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
