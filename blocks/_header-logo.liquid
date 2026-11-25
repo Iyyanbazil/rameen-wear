@@ -150,6 +150,10 @@
     height: calc(var(--header-logo-image-height-mobile) * var(--header-logo-scale));
     width: calc(var(--header-logo-image-width-mobile) * var(--header-logo-scale));
 
+    @media screen and (min-width: 781px) and (max-width: 1199px) {
+      transform: translateY(-7px);
+    }
+
     @media screen and (min-width: 750px) {
       height: calc(var(--header-logo-image-height) * var(--header-logo-scale));
       width: calc(var(--header-logo-image-width) * var(--header-logo-scale));
