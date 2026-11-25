@@ -1,0 +1,191 @@
+{% comment %}
+  Collection page banner sourced from custom.cover_image, with collection.image as its fallback.
+  @example
+  <!-- Define a collection file-reference metafield with namespace/key custom.cover_image. -->
+{% endcomment %}
+
+{% liquid
+  assign banner_image = collection.metafields.custom.cover_image.value | default: collection.image
+  assign image_loading = 'eager'
+  assign image_fetchpriority = 'auto'
+
+  if section.index <= 2
+    assign image_fetchpriority = 'high'
+  elsif section.index > 3
+    assign image_loading = 'lazy'
+  endif
+%}
+
+<section
+  class="collection-banner{% if banner_image == blank %} collection-banner--without-image{% endif %}"
+  style="
+    --collection-banner-height: {{ section.settings.height }}px;
+    --collection-banner-mobile-height: {{ section.settings.mobile_height }}px;
+    --collection-banner-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --collection-banner-text-color: {{ section.settings.text_color }};
+  "
+>
+  {% if banner_image != blank %}
+    <div class="collection-banner__media" aria-hidden="true">
+      {{
+        banner_image
+        | image_url: width: 3840
+        | image_tag:
+          widths: '750, 1100, 1500, 2000, 3000, 3840',
+          sizes: '100vw',
+          loading: image_loading,
+          fetchpriority: image_fetchpriority,
+          class: 'collection-banner__image',
+          alt: ''
+      }}
+    </div>
+    <div class="collection-banner__overlay"></div>
+  {% endif %}
+
+  <div class="collection-banner__content">
+    <h1 class="collection-banner__title">{{ collection.title | escape }}</h1>
+
+    {% if section.settings.show_description and collection.description != blank %}
+      <div class="collection-banner__description rte">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .collection-banner {
+    position: relative;
+    display: grid;
+    min-height: var(--collection-banner-height);
+    overflow: hidden;
+    color: var(--collection-banner-text-color);
+    background: var(--color-background);
+    isolation: isolate;
+  }
+
+  .collection-banner__media,
+  .collection-banner__overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  .collection-banner__media {
+    z-index: -2;
+  }
+
+  .collection-banner__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .collection-banner__overlay {
+    z-index: -1;
+    background: rgb(0 0 0 / var(--collection-banner-overlay-opacity));
+  }
+
+  .collection-banner__content {
+    align-self: end;
+    width: 100%;
+    max-width: var(--page-width);
+    min-width: 0;
+    margin-inline: auto;
+    padding-block: clamp(var(--padding-xl), 6vw, 5rem);
+    padding-inline: var(--page-margin);
+  }
+
+  .collection-banner__title {
+    margin: 0;
+    color: inherit;
+    overflow-wrap: anywhere;
+  }
+
+  .collection-banner__description {
+    max-width: 50rem;
+    margin-block-start: var(--padding-md);
+    color: inherit;
+  }
+
+  .collection-banner__description > :first-child {
+    margin-block-start: 0;
+  }
+
+  .collection-banner__description > :last-child {
+    margin-block-end: 0;
+  }
+
+  .collection-banner--without-image {
+    min-height: auto;
+    color: var(--color-foreground);
+  }
+
+  @media screen and (max-width: 749px) {
+    .collection-banner:not(.collection-banner--without-image) {
+      min-height: var(--collection-banner-mobile-height);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.collection_image",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "t:names.description",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "t:settings.height",
+      "min": 240,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 520
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "t:settings.mobile_height",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 340
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:settings.text_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "t:settings.overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 35
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.collection_image",
+      "category": "t:categories.banners"
+    }
+  ]
+}
+{% endschema %}
