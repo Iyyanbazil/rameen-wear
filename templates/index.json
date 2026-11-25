@@ -644,8 +644,21 @@
             "group_UydKWg",
             "buy_buttons"
           ]
+        },
+        "product_end_divider": {
+          "type": "ornamental-divider",
+          "name": "t:names.divider",
+          "settings": {
+            "color": "#c9584c",
+            "padding-block-start": 48,
+            "padding-block-end": 24
+          },
+          "blocks": {}
         }
       },
+      "block_order": [
+        "product_end_divider"
+      ],
       "name": "t:names.product_list",
       "settings": {
         "collection": "all",

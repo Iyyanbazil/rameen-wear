@@ -269,6 +269,27 @@ p:empty {
 
 .content-for-layout > .shopify-section:last-child {
   flex-grow: 1;
+  margin-block-end: var(--padding-5xl);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-section-reveal] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition:
+      opacity 700ms var(--animation-easing),
+      transform 700ms var(--animation-easing);
+  }
+
+  [data-section-reveal].section-reveal--pending {
+    opacity: 0;
+    transform: translateY(28px) scale(0.992);
+    will-change: opacity, transform;
+  }
+
+  [data-section-reveal].section-reveal--visible {
+    will-change: auto;
+  }
 }
 
 /* Set up page widths & margins. Gutters grow to the device safe-area insets (viewport-fit=cover)

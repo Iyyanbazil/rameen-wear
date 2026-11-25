@@ -28,6 +28,10 @@
     {% if section.settings.heading != blank %}
       <div class="round-collection-list__heading">
         {{ section.settings.heading }}
+        {% render 'ornamental-divider',
+          color: section.settings.divider_color,
+          class: 'round-collection-list__heading-ornament'
+        %}
       </div>
     {% endif %}
 
@@ -102,6 +106,10 @@
 
   .round-collection-list__heading > * {
     margin: 0;
+  }
+
+  .round-collection-list__heading .round-collection-list__heading-ornament {
+    margin-block-start: var(--padding-sm);
   }
 
   .round-collection-list__items {

@@ -6,8 +6,13 @@
   endif
 %}
 
+{% render 'footer-gradient-styles' %}
+
 <div
-  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}{% if section.settings.enable_gradient %} footer-gradient-background{% endif %}"
+  {% if section.settings.enable_gradient %}
+    style="--footer-gradient-start: {{ section.settings.gradient_start }}; --footer-gradient-end: {{ section.settings.gradient_end }};"
+  {% endif %}
 ></div>
 <div
   class="section section--{{ section.settings.section_width }}{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
@@ -138,6 +143,28 @@
       "id": "background_color",
       "label": "t:settings.background_color",
       "default": "{{ settings.color_palette.foreground }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "t:options.gradient",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "gradient_start",
+      "label": "t:options.start",
+      "alpha": true,
+      "default": "#f2e3d9",
+      "visible_if": "{{ section.settings.enable_gradient }}"
+    },
+    {
+      "type": "color",
+      "id": "gradient_end",
+      "label": "t:options.end",
+      "alpha": true,
+      "default": "#fff8f3",
+      "visible_if": "{{ section.settings.enable_gradient }}"
     },
     {
       "type": "range",

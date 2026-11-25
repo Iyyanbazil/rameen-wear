@@ -46,24 +46,25 @@
       "type": "footer",
       "blocks": {
         "menu_ywDwTf": { "type": "menu", "name": "t:names.menu", "settings": { "menu": "footer", "heading": "OUR COMPANY", "menu_spacing": 8, "show_as_accordion": false, "accordion_icon": "caret", "accordion_dividers": false, "heading_preset": "h5", "link_preset": "paragraph" }, "blocks": {} },
-        "menu_UR3gWa": { "type": "menu", "name": "t:names.menu", "settings": { "menu": "", "heading": "HERE TO HELP", "menu_spacing": 8, "show_as_accordion": false, "accordion_icon": "caret", "accordion_dividers": false, "heading_preset": "h5", "link_preset": "paragraph" }, "blocks": {} },
+        "menu_UR3gWa": { "type": "footer-collections", "name": "t:names.collection_list", "settings": { "heading": "COLLECTIONS", "collection_list": ["abayas", "hijab-caps", "stalers", "new-arrivals", "4-piece", "hood-abaya"], "max_collections": 6 }, "blocks": {} },
         "menu_4KapTg": { "type": "menu", "name": "t:names.menu", "settings": { "menu": "", "heading": "USEFUL LINKS", "menu_spacing": 8, "show_as_accordion": false, "accordion_icon": "caret", "accordion_dividers": false, "heading_preset": "h5", "link_preset": "paragraph" }, "blocks": {} },
         "newsletter": {
           "type": "group",
           "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "vertical_alignment_flex_direction_column": "flex-start", "gap": 14, "width": "fill", "height": "fit" },
           "blocks": {
-            "heading": { "type": "text", "settings": { "text": "<h5>JOIN #RAMEENFAM</h5>", "width": "100%", "type_preset": "h5" }, "blocks": {} },
+            "footer_logo": { "type": "logo", "settings": { "inverse": false, "unit": "pixel", "pixel_height": 64, "custom_mobile_size": true, "unit_mobile": "pixel", "pixel_height_mobile": 56, "padding-block-start": 0, "padding-block-end": 8, "padding-inline-start": 0, "padding-inline-end": 0 }, "blocks": {} },
+            "heading": { "type": "text", "settings": { "text": "<h5><strong>JOIN #RAMEENFAM</strong></h5>", "width": "100%", "type_preset": "h5" }, "blocks": {} },
             "description": { "type": "text", "settings": { "text": "<p>Sign up for Rameen Wear updates to receive information about new arrivals, future events and special offers.</p>", "width": "100%", "type_preset": "paragraph", "font_size": "0.75rem" }, "blocks": {} },
-            "signup": { "type": "email-signup", "settings": { "width": "fill", "heading": "", "border_style": "all", "input_style": "custom", "border_width": 1, "border_radius": 0, "input_background_color": "#F6F6F6", "input_text_color": "{{ settings.color_palette.foreground }}", "input_border_color": "#DDDDDD", "input_type_preset": "paragraph", "style_class": "button", "display_type": "text", "label": "SUBSCRIBE!", "integrated_button": false, "button_type_preset": "paragraph" }, "blocks": {} },
-            "follow": { "type": "text", "settings": { "text": "<h5>FOLLOW US</h5>", "width": "100%", "type_preset": "h5", "padding-block-start": 12 }, "blocks": {} },
-            "social": { "type": "social-links", "settings": {}, "blocks": {} }
+            "signup": { "type": "email-signup", "settings": { "width": "fill", "heading": "", "border_style": "all", "input_style": "custom", "border_width": 1, "border_radius": 10, "input_background_color": "#ffffff", "input_text_color": "{{ settings.color_palette.foreground }}", "input_border_color": "#DDDDDD", "input_type_preset": "paragraph", "style_class": "button", "display_type": "text", "label": "SUBSCRIBE!", "integrated_button": false, "button_type_preset": "paragraph" }, "blocks": {} },
+            "follow": { "type": "text", "settings": { "text": "<h5><strong>FOLLOW US</strong></h5>", "width": "100%", "type_preset": "h5", "padding-block-start": 12 }, "blocks": {} },
+            "social": { "type": "social-links", "settings": { "icon_color": "#000000", "facebook_url": "", "instagram_url": "", "youtube_url": "", "tiktok_url": "", "twitter_url": "", "threads_url": "", "linkedin_url": "", "whatsapp_url": "", "snapchat_url": "", "pinterest_url": "" }, "blocks": {} }
           },
-          "block_order": ["heading", "description", "signup", "follow", "social"]
+          "block_order": ["footer_logo", "heading", "description", "signup", "follow", "social"]
         }
       },
       "block_order": ["menu_ywDwTf", "menu_UR3gWa", "menu_4KapTg", "newsletter"],
       "name": "t:names.footer",
-      "settings": { "section_width": "page-width", "gap": 32, "background_color": "{{ settings.color_palette.background }}", "padding-block-start": 54, "padding-block-end": 54 }
+      "settings": { "section_width": "page-width", "gap": 32, "background_color": "#f2e3d9", "enable_gradient": true, "gradient_start": "#f2e3d9", "gradient_end": "#fff8f3", "padding-block-start": 54, "padding-block-end": 54 }
     },
     "utilities": {
       "type": "footer-utilities",
@@ -72,7 +73,7 @@
         "payment_icons": { "type": "payment-icons", "name": "t:names.payment_icons", "settings": { "horizontal_alignment": "flex-end", "gap": 8 }, "blocks": {} }
       },
       "block_order": ["footer_copyright_gF93Yj", "payment_icons"],
-      "settings": { "section_width": "page-width", "gap": 24, "divider_thickness": 1, "divider_color": "#DDDDDD", "background_color": "{{ settings.color_palette.background }}", "padding-block-start": 14, "padding-block-end": 14 }
+      "settings": { "section_width": "page-width", "gap": 24, "divider_thickness": 1, "divider_color": "#d9c4b7", "background_color": "#f2e3d9", "enable_gradient": true, "gradient_start": "#f2e3d9", "gradient_end": "#fff8f3", "padding-block-start": 14, "padding-block-end": 14 }
     }
   },
   "order": ["footer-benefits", "footer_QAE7jb", "utilities"]

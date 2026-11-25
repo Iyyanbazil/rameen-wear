@@ -1,0 +1,40 @@
+{%- doc -%}
+  Owns the shared animated footer gradient styles.
+
+  @example
+  {% render 'footer-gradient-styles' %}
+{%- enddoc -%}
+
+{% stylesheet %}
+  .footer-gradient-background {
+    background-image: radial-gradient(
+      ellipse at 50% 35%,
+      var(--footer-gradient-end) 0%,
+      var(--footer-gradient-start) 100%
+    );
+    background-position: 15% 20%;
+    background-size: 160% 160%;
+    animation: footer-gradient-drift 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes footer-gradient-drift {
+    0% {
+      background-position: 15% 20%;
+    }
+
+    50% {
+      background-position: 85% 45%;
+    }
+
+    100% {
+      background-position: 30% 80%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-gradient-background {
+      animation: none;
+      background-position: 50% 50%;
+    }
+  }
+{% endstylesheet %}

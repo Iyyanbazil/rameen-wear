@@ -64,7 +64,18 @@
       {{ logo_image }}
     </div>
   {% else %}
-    {% render 'jumbo-text', text: shop.name %}
+    <div class="logo-block__image-wrapper">
+      <img
+        src="{{ 'logo.png' | asset_img_url: 'medium' }}"
+        srcset="{{ 'logo.png' | asset_img_url: 'medium' }} 240w, {{ 'logo.png' | asset_img_url: 'large' }} 480w"
+        sizes="240px"
+        class="logo-block__image"
+        width="240"
+        height="80"
+        alt="{{ 'accessibility.home_logo_alt' | t: store_name: shop.name | escape }}"
+        loading="lazy"
+      >
+    </div>
   {% endif %}
 </div>
 
