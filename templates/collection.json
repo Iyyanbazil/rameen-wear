@@ -18,6 +18,16 @@
         "overlay_opacity": 35
       }
     },
+    "round_collections": {
+      "type": "round-collection-list",
+      "settings": {
+        "max_collections": 10,
+        "image_size": 112,
+        "gap": 24,
+        "padding_block_start": 24,
+        "padding_block_end": 24
+      }
+    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -238,6 +248,7 @@
   },
   "order": [
     "section",
+    "round_collections",
     "main"
   ]
 }

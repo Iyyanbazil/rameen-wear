@@ -88,8 +88,18 @@
         %}
       {% endpaginate %}
     </div>
+
+    {% render 'ornamental-divider', color: settings.color_palette.color1, class: 'main-collection__end-divider' %}
   </results-list>
 </collection-component>
+
+{% stylesheet %}
+  .main-collection__end-divider {
+    grid-column: 1 / -1;
+    margin-block-start: var(--padding-5xl);
+    padding-block-end: var(--padding-xl);
+  }
+{% endstylesheet %}
 
 {% schema %}
 {

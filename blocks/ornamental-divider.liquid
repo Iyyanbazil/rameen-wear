@@ -1,0 +1,64 @@
+{% doc %}
+  Renders a merchant-configurable ornamental divider block.
+
+  @example
+  {% content_for 'block', type: 'ornamental-divider', id: 'heading-divider' %}
+{% enddoc %}
+
+<div
+  class="ornamental-divider-block spacing-style"
+  style="{% render 'spacing-style', settings: block.settings %}"
+  {{ block.shopify_attributes }}
+>
+  {% render 'ornamental-divider', color: block.settings.color %}
+</div>
+
+{% stylesheet %}
+  .ornamental-divider-block {
+    width: 100%;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.divider",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color",
+      "id": "color",
+      "label": "t:settings.color",
+      "default": "#c9584c"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.divider"
+    }
+  ]
+}
+{% endschema %}
