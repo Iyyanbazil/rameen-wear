@@ -20,8 +20,12 @@
   .homepage-banner-video {
     margin-block-start: 0;
 
-    @media screen and (min-width: 780px) {
-      margin-block-start: -10px;
+    @media screen and (780px < width < 1200px) {
+      margin-block-start: -32px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-block-start: -102px;
     }
   }
 {% endstylesheet %}

@@ -18,8 +18,8 @@
           "type": "_header-logo",
           "static": true,
           "settings": {
-            "hide_logo_on_home_page": true,
-            "padding-block-start": 0,
+            "hide_logo_on_home_page": false,
+            "padding-block-start": 16,
             "padding-block-end": 0
           },
           "blocks": {}
