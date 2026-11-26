@@ -89,16 +89,45 @@
       {% endpaginate %}
     </div>
 
-    {% render 'ornamental-divider', color: settings.color_palette.color1, class: 'main-collection__end-divider' %}
   </results-list>
 </collection-component>
 
 {% stylesheet %}
-  .main-collection__end-divider {
-    grid-column: 1 / -1;
-    margin-block-start: var(--padding-5xl);
-    padding-block-end: var(--padding-xl);
+  .product-grid-container .buy-buttons-block {
+    --height-buy-buttons: 40px;
+
+    margin-block-start: 6px;
   }
+
+  .product-grid-container .buy-buttons-block:has(.add-to-cart-button:disabled) {
+    display: none;
+  }
+
+  .product-grid-container .buy-buttons-block :is(.quantity-selector-wrapper, .quantity-label, .quantity-rules) {
+    display: none;
+  }
+
+  .product-grid-container .buy-buttons-block .product-form-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap-xs);
+  }
+
+  .product-grid-container .buy-buttons-block .product-form-buttons:has(.custom-buy-now-button) {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+
+  .product-grid-container .buy-buttons-block .product-form-buttons > * {
+    min-width: 0;
+  }
+
+  .product-grid-container .buy-buttons-block .product-form-buttons button {
+    min-height: var(--height-buy-buttons);
+    padding: var(--padding-xs) var(--padding-sm);
+    border-radius: 6px;
+    font-size: var(--font-size--sm);
+  }
+
 {% endstylesheet %}
 
 {% schema %}

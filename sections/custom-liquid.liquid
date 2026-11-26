@@ -4,6 +4,9 @@
   if section.settings.background_color != blank
     render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
   endif
+
+  assign banner_button_link = section.settings.banner_button_link | default: routes.all_products_collection_url
+  assign banner_overlay_opacity = section.settings.banner_overlay_opacity | divided_by: 100.0
 %}
 
 <div
@@ -13,10 +16,30 @@
   class="section section--{{ section.settings.section_width }} spacing-style{% if section.settings.overlap_header %} disable-section-top-offset{% endif %}{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
   style="{% render 'spacing-padding', settings: section.settings %}"
 >
-  {{ section.settings.custom_liquid }}
+  <div
+    class="custom-liquid__content"
+    style="--custom-liquid-overlay-color: {{ section.settings.banner_overlay_color }}; --custom-liquid-overlay-opacity: {{ banner_overlay_opacity }}; --custom-liquid-button-background: {{ section.settings.banner_button_background }}; --custom-liquid-button-color: {{ section.settings.banner_button_text_color }};"
+  >
+    {{ section.settings.custom_liquid }}
+
+    {% if section.settings.enable_banner_overlay %}
+      <span class="custom-liquid__banner-overlay" aria-hidden="true"></span>
+    {% endif %}
+
+    {% if section.settings.banner_button_label != blank %}
+      <a class="button custom-liquid__banner-button" href="{{ banner_button_link }}">
+        {{ section.settings.banner_button_label | escape }}
+      </a>
+    {% endif %}
+  </div>
 </div>
 
 {% stylesheet %}
+  .custom-liquid__content {
+    min-width: 0;
+    position: relative;
+  }
+
   .homepage-banner-video {
     margin-block-start: 0;
 
@@ -26,6 +49,67 @@
 
     @media screen and (min-width: 1200px) {
       margin-block-start: -102px;
+    }
+  }
+
+  .custom-liquid__banner-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--custom-liquid-overlay-color);
+    opacity: var(--custom-liquid-overlay-opacity);
+    pointer-events: none;
+  }
+
+  .custom-liquid__banner-button {
+    --custom-liquid-button-float-distance: 6px;
+
+    position: absolute;
+    inset-block-start: 81%;
+    inset-inline-start: calc(50% - 7px);
+    z-index: 2;
+    min-width: 9rem;
+    justify-content: center;
+    color: var(--custom-liquid-button-color);
+    background: var(--custom-liquid-button-background);
+    border-radius: 999px;
+    box-shadow: 0 14px 32px rgb(0 0 0 / 0.24), 0 4px 10px rgb(0 0 0 / 0.16);
+    translate: -50% -50%;
+    animation: custom-liquid-button-float 3s ease-in-out infinite;
+    transition: box-shadow 250ms ease;
+  }
+
+  .custom-liquid__banner-button:hover {
+    color: var(--custom-liquid-button-color);
+    box-shadow: 0 18px 38px rgb(0 0 0 / 0.3), 0 6px 12px rgb(0 0 0 / 0.2);
+  }
+
+  @keyframes custom-liquid-button-float {
+    0%,
+    100% {
+      translate: -50% -50%;
+    }
+
+    50% {
+      translate: -50% calc(-50% - var(--custom-liquid-button-float-distance));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .custom-liquid__banner-button {
+      --custom-liquid-button-float-distance: 3px;
+
+      inset-block-start: 86%;
+      min-width: 6.5rem;
+      padding: 8px 16px;
+      font-size: 0.65rem;
+      line-height: 1.2;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .custom-liquid__banner-button {
+      animation: none;
     }
   }
 {% endstylesheet %}
@@ -51,6 +135,57 @@
       "id": "overlap_header",
       "label": "t:settings.overlap_header",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Banner overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_banner_overlay",
+      "label": "Enable banner overlay",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "banner_overlay_color",
+      "label": "Overlay color",
+      "default": "#666666",
+      "visible_if": "{{ section.settings.enable_banner_overlay }}"
+    },
+    {
+      "type": "range",
+      "id": "banner_overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 30,
+      "visible_if": "{{ section.settings.enable_banner_overlay }}"
+    },
+    {
+      "type": "text",
+      "id": "banner_button_label",
+      "label": "Button label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "color",
+      "id": "banner_button_background",
+      "label": "Button background",
+      "default": "#ff654f"
+    },
+    {
+      "type": "color",
+      "id": "banner_button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "url",
+      "id": "banner_button_link",
+      "label": "Button link"
     },
     {
       "type": "select",

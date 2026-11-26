@@ -269,7 +269,7 @@ p:empty {
 
 .content-for-layout > .shopify-section:last-child {
   flex-grow: 1;
-  margin-block-end: var(--padding-5xl);
+  margin-block-end: var(--padding-6xl);
 }
 
 @media (prefers-reduced-motion: no-preference) {

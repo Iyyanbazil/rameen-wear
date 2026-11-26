@@ -44,7 +44,7 @@
   {{ block.shopify_attributes }}
 >
   {%- if product != blank -%}
-    {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id -%}
+    {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id | append: '-' | append: product.id -%}
     <product-form-component
       data-section-id="{{ section.id }}"
       data-product-id="{{ product.id }}"
@@ -231,12 +231,28 @@
             add_to_cart_text: add_to_cart_text
           %}
 
-          {% content_for 'block',
-            type: 'accelerated-checkout',
-            id: 'accelerated-checkout',
-            can_add_to_cart: can_add_to_cart,
-            form_obj: form
-          %}
+          {% if block_settings.show_buy_now %}
+            {% if template.name == 'collection' or template.name == 'index' %}
+              {% if can_add_to_cart %}
+                <button
+                  type="button"
+                  class="button custom-buy-now-button"
+                  style="--collection-buy-now-background: {{ block_settings.buy_now_background }}; --collection-buy-now-color: {{ block_settings.buy_now_text_color }};"
+                  data-buy-now-base-url="{{ routes.cart_url }}/"
+                  on:click="/handleBuyNow"
+                >
+                  {{ block_settings.buy_now_label | escape }}
+                </button>
+              {% endif %}
+            {% else %}
+              {% content_for 'block',
+                type: 'accelerated-checkout',
+                id: 'accelerated-checkout',
+                can_add_to_cart: can_add_to_cart,
+                form_obj: form
+              %}
+            {% endif %}
+          {% endif %}
         </div>
         {%- if block_settings.gift_card_form and product.gift_card? -%}
           </span>
@@ -463,6 +479,32 @@
       "id": "text_color",
       "label": "t:settings.text_color",
       "placeholder": "t:settings.default"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_buy_now",
+      "label": "t:names.accelerated_checkout",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "buy_now_label",
+      "label": "t:settings.label",
+      "default": "Buy it now"
+    },
+    {
+      "type": "color",
+      "id": "buy_now_background",
+      "label": "t:settings.background",
+      "default": "#e45847",
+      "alpha": true
+    },
+    {
+      "type": "color",
+      "id": "buy_now_text_color",
+      "label": "t:settings.text",
+      "default": "#ffffff",
+      "alpha": true
     },
     {
       "type": "header",

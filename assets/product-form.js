@@ -333,6 +333,24 @@ class ProductFormComponent extends Component {
     this.#processAddToCart(undefined, undefined, event);
   }
 
+  /** @param {Event} event */
+  handleBuyNow(event) {
+    event.preventDefault();
+
+    const target = event.target;
+    const button = target instanceof Element ? target.closest('[data-buy-now-base-url]') : null;
+    const variantInput = this.#getVariantIdInput();
+
+    if (!(button instanceof HTMLButtonElement) || !variantInput?.value) return;
+
+    const baseUrl = button.dataset.buyNowBaseUrl;
+    if (!baseUrl) return;
+
+    const quantity = this.#getQuantity();
+    const checkoutUrl = new URL(`${baseUrl}${encodeURIComponent(variantInput.value)}:${quantity}`, window.location.origin);
+    window.location.assign(checkoutUrl.toString());
+  }
+
   /** @returns {number} */
   #getQuantity() {
     return Number(this.refs.quantitySelector?.getValue?.()) || Number(this.dataset.quantityDefault) || 1;

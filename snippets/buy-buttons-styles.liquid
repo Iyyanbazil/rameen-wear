@@ -322,6 +322,16 @@
     font-size: smaller;
   }
 
+  .custom-buy-now-button {
+    color: var(--collection-buy-now-color);
+    background-color: var(--collection-buy-now-background);
+  }
+
+  .custom-buy-now-button:hover {
+    color: var(--collection-buy-now-color);
+    background-color: color-mix(in srgb, var(--collection-buy-now-background) 88%, black);
+  }
+
   more-payment-options-link a:hover {
     color: rgb(var(--color-rgb, var(--color-foreground-rgb)) / var(--opacity-subdued-text));
   }
