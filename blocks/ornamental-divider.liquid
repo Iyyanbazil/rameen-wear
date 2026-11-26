@@ -17,6 +17,12 @@
   .ornamental-divider-block {
     width: 100%;
   }
+
+  @media screen and (max-width: 749px) {
+    .text-block:has(+ .ornamental-divider-block) :is(h1, h2, h3, h4, h5, h6) {
+      font-size: var(--font-size--2xl);
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}

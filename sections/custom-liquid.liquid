@@ -41,7 +41,16 @@
   }
 
   .homepage-banner-video {
+    display: block;
+    width: 100%;
+    height: auto;
     margin-block-start: 0;
+
+    @media screen and (max-width: 749px) {
+      height: 62.5vw;
+      object-fit: cover;
+      object-position: center;
+    }
 
     @media screen and (780px < width < 1200px) {
       margin-block-start: -32px;
@@ -99,9 +108,9 @@
     .custom-liquid__banner-button {
       --custom-liquid-button-float-distance: 3px;
 
-      inset-block-start: 86%;
-      min-width: 6.5rem;
-      padding: 8px 16px;
+      inset-block-start: 88%;
+      min-width: 5.5rem;
+      padding: 8px;
       font-size: 0.65rem;
       line-height: 1.2;
     }

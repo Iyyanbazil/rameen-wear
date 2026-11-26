@@ -1,0 +1,64 @@
+{% doc %}
+  Renders the generated collection navigation used in the header.
+
+  @param {string} layout - The menu presentation: `desktop` or `drawer`.
+  @param {object} collection_list - The store collections drop.
+  @param {object} [current_collection] - The collection currently being viewed.
+
+  @example
+  {% render 'header-collections-menu', layout: 'desktop', collection_list: collections, current_collection: collection %}
+{% enddoc %}
+
+{% if layout == 'drawer' %}
+  <details id="Details-menu-drawer-collections">
+    <summary
+      id="HeaderDrawer-collections"
+      class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element"
+    >
+      <span class="menu-drawer__menu-item-text wrap-text">Collections</span>
+      <span class="svg-wrapper icon-plus">
+        {{- 'icon-plus.svg' | inline_asset_content -}}
+      </span>
+    </summary>
+    <ul
+      class="menu-drawer__menu menu-drawer__menu--childlist menu-drawer__animated-element details-content"
+      role="list"
+      tabindex="-1"
+    >
+      {%- for collection_item in collection_list -%}
+        <li
+          class="menu-drawer__list-item"
+          style="--menu-drawer-animation-index: {{ forloop.index }};"
+        >
+          <a
+            href="{{ collection_item.url }}"
+            class="menu-drawer__menu-item menu-drawer__menu-item--child{% if collection_item.handle == current_collection.handle %} menu-drawer__menu-item--active{% endif %}"
+            {% if collection_item.handle == current_collection.handle %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span class="menu-drawer__menu-item-text wrap-text">
+              {{- collection_item.title | escape -}}
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </details>
+{% else %}
+  <ul class="header-collections-menu list-unstyled" role="list">
+    {% for collection_item in collection_list %}
+      <li class="header-collections-menu__item">
+        <a
+          href="{{ collection_item.url }}"
+          class="header-collections-menu__link"
+          {% if collection_item.handle == current_collection.handle %}
+            aria-current="page"
+          {% endif %}
+        >
+          {{- collection_item.title | escape -}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

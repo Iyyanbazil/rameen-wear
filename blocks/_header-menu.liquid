@@ -94,17 +94,36 @@
 
     {% capture children %}
       {% for link in block_settings.menu.links %}
+        {% liquid
+          assign link_title_downcase = link.title | downcase
+          assign is_collections_menu = false
+          if link.type == 'catalog_link' or link_title_downcase == 'catalog'
+            assign is_collections_menu = true
+          endif
+
+          assign has_submenu = false
+          if link.links != blank or is_collections_menu
+            assign has_submenu = true
+          endif
+
+          assign menu_link_title = link.title
+          assign menu_link_url = link.url
+          if is_collections_menu
+            assign menu_link_title = 'Collections'
+            assign menu_link_url = routes.root_url | append: 'collections'
+          endif
+        %}
         <li
           class="menu-list__list-item"
           on:blur="/deactivate"
           on:pointerenter="/activate"
           on:pointerleave="/deactivate"
         >
-          {%- if link.links != blank -%}
+          {%- if has_submenu -%}
             <span class="menu-list__trigger">
           {%- endif -%}
           <a
-            href="{{ link.url }}"
+            href="{{ menu_link_url }}"
             data-skip-node-update="true"
             class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}"
             {% if link.current %}
@@ -112,9 +131,9 @@
             {% endif %}
             ref="menuitem"
           >
-            <span class="menu-list__link-title">{{- link.title -}}</span>
+            <span class="menu-list__link-title">{{- menu_link_title | escape -}}</span>
           </a>
-          {%- if link.links != blank -%}
+          {%- if has_submenu -%}
             <button
               type="button"
               class="menu-list__disclosure button-unstyled"
@@ -124,7 +143,7 @@
               data-skip-node-update
               on:click="/toggle"
             >
-              <span class="visually-hidden">{{ 'accessibility.show_submenu' | t: title: link.title }}</span>
+              <span class="visually-hidden">{{ 'accessibility.show_submenu' | t: title: menu_link_title }}</span>
               <svg
                 class="menu-list__disclosure-icon"
                 aria-hidden="true"
@@ -151,17 +170,25 @@
                     class="mega-menu__grid"
                     data-menu-grid-id="{{ list_id }}"
                   >
-                    {% render 'mega-menu-list',
-                      parent_link: link,
-                      id: list_id,
-                      section: section,
-                      grid_columns_count: 6,
-                      grid_columns_count_tablet: 4,
-                      grid_columns_count_collection_images: 8,
-                      menu_content_type: menu_content_type,
-                      content_aspect_ratio: ratio,
-                      image_border_radius: image_border_radius
-                    %}
+                    {% if is_collections_menu %}
+                      {% render 'header-collections-menu',
+                        layout: 'desktop',
+                        collection_list: collections,
+                        current_collection: collection
+                      %}
+                    {% else %}
+                      {% render 'mega-menu-list',
+                        parent_link: link,
+                        id: list_id,
+                        section: section,
+                        grid_columns_count: 6,
+                        grid_columns_count_tablet: 4,
+                        grid_columns_count_collection_images: 8,
+                        menu_content_type: menu_content_type,
+                        content_aspect_ratio: ratio,
+                        image_border_radius: image_border_radius
+                      %}
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -316,7 +343,7 @@
   .menu-list__link {
     font-family: var(--menu-top-level-font-family);
     font-style: var(--menu-top-level-font-style);
-    font-weight: var(--menu-top-level-font-weight);
+    font-weight: 550;
     font-size: var(--menu-top-level-font-size);
     line-height: var(--menu-top-level-font-line-height);
     text-transform: var(--menu-top-level-font-case);
@@ -364,7 +391,7 @@
   .menu-list__disclosure {
     position: absolute;
     inset-block-start: 50%;
-    inset-inline-start: calc(100% - var(--gap-xs));
+    inset-inline-start: calc(100% - var(--gap-xs) - 6px);
     width: max-content;
     display: flex;
     align-items: center;
@@ -373,13 +400,11 @@
     padding-block: var(--padding-sm);
     color: var(--menu-top-level-font-color);
     cursor: pointer;
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-50%);
     outline-offset: 0.1em;
 
-    /* Hidden control must not intercept pointer events; hover-open is driven by
-       the list item itself. */
-    pointer-events: none;
+    pointer-events: auto;
 
     &:focus-visible {
       opacity: 1;
@@ -400,7 +425,32 @@
   }
 
   .menu-list__link-title {
-    padding-inline: var(--gap-sm);
+    padding-inline: calc(var(--gap-sm) + 6px);
+  }
+
+  .header-collections-menu {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: var(--gap-sm) var(--gap-2xl);
+    width: 100%;
+    margin: 0;
+    padding-block: var(--padding-xl);
+  }
+
+  .header-collections-menu__link {
+    display: block;
+    padding-block: var(--padding-xs);
+    color: var(--color-foreground);
+    font-weight: 500;
+    text-decoration: none;
+    white-space: normal;
+  }
+
+  .header-collections-menu__link:hover,
+  .header-collections-menu__link:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
   [slot='overflow'] .menu-list__link-title {
     padding-inline: 0;

@@ -12,7 +12,7 @@
     "section_Fh7TFQ": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<video class=\"homepage-banner-video\" width=\"1280\" height=\"720\" autoplay loop muted playsinline preload=\"auto\" aria-hidden=\"true\" style=\"display: block; width: 100%; height: auto;\"><source src=\"{{ 'models_walking-banner-v3.mp4' | asset_url }}\" type=\"video/mp4\"></video>",
+        "custom_liquid": "<video class=\"homepage-banner-video\" width=\"1280\" height=\"720\" autoplay loop muted playsinline preload=\"auto\" aria-hidden=\"true\" style=\"display: block; width: 100%;\"><source src=\"{{ 'models_walking-banner-v3.mp4' | asset_url }}\" type=\"video/mp4\"></video>",
         "background_color": "",
         "overlap_header": true,
         "enable_banner_overlay": false,
@@ -590,7 +590,7 @@
                 "stacking": false,
                 "text_color": "",
                 "show_buy_now": true,
-                "buy_now_label": "Buy it now",
+                "buy_now_label": "Buy now",
                 "buy_now_background": "#e45847",
                 "buy_now_text_color": "#ffffff",
                 "show_pickup_availability": false,

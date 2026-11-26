@@ -110,12 +110,28 @@
             {% assign first_accordion_open = false %}
             {% assign animation_index = 0 %}
             {%- for link in linklist.links -%}
-              {% assign animation_index = animation_index | plus: 1 %}
+              {% liquid
+                assign animation_index = animation_index | plus: 1
+                assign link_title_downcase = link.title | downcase
+                assign is_collections_menu = false
+                if link.type == 'catalog_link' or link_title_downcase == 'catalog'
+                  assign is_collections_menu = true
+                endif
+              %}
               <li
                 style="--menu-drawer-animation-index: {{ animation_index }};"
                 class="{%- if block_settings.drawer_accordion -%}menu-drawer__list-item--deep{%- else -%}menu-drawer__list-item--flat{%- endif -%}{% if block_settings.drawer_dividers %} menu-drawer__list-item--divider{% endif %}"
               >
-                {% if block_settings.drawer_accordion and link.links != blank %}
+                {% if is_collections_menu %}
+                  {% capture accordion_children %}
+                    {% render 'header-collections-menu',
+                      layout: 'drawer',
+                      collection_list: collections,
+                      current_collection: collection
+                    %}
+                  {% endcapture %}
+                  {% render 'accordion-custom-component', children: accordion_children %}
+                {% elsif block_settings.drawer_accordion and link.links != blank %}
                   {%- comment -%}
                     Accordion for links with children, in menus with fewer than 3 levels of links
                   {%- endcomment -%}
@@ -1112,7 +1128,7 @@
     min-height: calc(2 * var(--padding-lg) + var(--icon-size-xs));
     font-family: var(--menu-top-level-font-family);
     font-style: var(--menu-top-level-font-style);
-    font-weight: var(--menu-top-level-font-weight);
+    font-weight: 400;
     font-size: var(--menu-top-level-font-size);
     line-height: var(--menu-top-level-font-line-height);
     text-transform: var(--menu-top-level-font-case);
